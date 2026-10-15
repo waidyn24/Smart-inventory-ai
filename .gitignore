@@ -1,0 +1,10 @@
+.env
+*.db
+*.sqlite3
+__pycache__/
+.pytest_cache/
+*.pyc
+.next/
+node_modules/
+.venv/
+playwright-report/

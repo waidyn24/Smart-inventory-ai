@@ -1,0 +1,26 @@
+# Deploy via Render -> New -> Blueprint (GitHub repo required).
+# Render Free Postgres expires 30 days after creation (Render policy).
+databases:
+  - name: smart-inventory-ai-db
+    plan: free
+    databaseName: smart_inventory
+    user: inventory
+
+services:
+  - type: web
+    name: smart-inventory-ai-online
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: smart-inventory-ai-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: ALLOW_DEMO_RESET
+        value: "false"

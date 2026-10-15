@@ -1,0 +1,11 @@
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+**/.venv
+**/inventory.db*
+**/.env
+.git
+.gitignore
+*.zip
